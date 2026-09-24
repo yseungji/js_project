@@ -21,11 +21,11 @@ Firebase 설정값이 없는 로컬 환경에서는 공개 페이지에 예시 �
 
 ## Firebase 초기 설정
 
-1. Firebase 프로젝트 `jsproject-509611`에서 결제 계정을 연결해 Blaze 요금제를 활성화합니다. Cloud Storage와 App Hosting에 필요합니다. 예산 알림과 사용량 제한도 설정해 주세요.
+1. Firebase 프로젝트 `jsproject-16910`에서 Blaze 요금제가 활성화되어 있는지 확인합니다. Cloud Storage와 App Hosting에 필요합니다. 예산 알림과 사용량 제한도 설정해 주세요.
 2. Authentication에서 이메일/비밀번호 로그인 방식을 켭니다.
 3. Firestore 데이터베이스와 Cloud Storage 기본 버킷을 생성합니다.
 4. 웹 앱을 등록하고 설정값을 `.env.local`에 넣습니다.
-5. Firebase CLI에 로그인한 뒤 `npx firebase deploy --only firestore:rules,storage --project jsproject-509611`로 보안 규칙을 배포합니다.
+5. Firebase CLI에 로그인한 뒤 `npx firebase deploy --only firestore:rules,storage --project jsproject-16910`로 보안 규칙을 배포합니다.
 6. Authentication에서 관리자 사용자 1명을 생성합니다. 해당 사용자의 UID를 확인하여 Firestore에 `admins/{UID}` 문서를 콘솔에서 직접 만듭니다. 필드는 `enabled: true` 정도로 두면 됩니다. 이 문서는 앱에서 만들거나 수정할 수 없습니다.
 7. `/admin/login`으로 로그인하고 상품 목록의 “기본 상품 2개 등록”을 눌러 초기 상품을 Firestore에 저장합니다.
 
@@ -33,7 +33,7 @@ Firebase 설정값이 없는 로컬 환경에서는 공개 페이지에 예시 �
 
 ## 배포
 
-GitHub 저장소 `yseungji/js_project`의 브랜치를 Firebase 콘솔 → App Hosting 백엔드에 연결합니다. App Hosting 환경 변수에 `.env.local`의 `NEXT_PUBLIC_FIREBASE_*` 값을 입력합니다. `main`에 병합하거나 백엔드에서 지정한 브랜치에 푸시하면 자동 배포됩니다. 도메인을 연결한 후 검색 엔진 등록, 실제 상품 정보·사진 검수, 문의 연락처 테스트를 마쳐야 운영할 수 있습니다.
+GitHub 저장소 `yseungji/js_project`의 브랜치를 Firebase 콘솔 → App Hosting 백엔드에 연결합니다. 공개 Firebase 웹 앱 설정값은 `apphosting.yaml`에 저장되어 있습니다. `main`에 병합하거나 백엔드에서 지정한 브랜치에 푸시하면 자동 배포됩니다. 도메인을 연결한 후 검색 엔진 등록, 실제 상품 정보·사진 검수, 문의 연락처 테스트를 마쳐야 운영할 수 있습니다.
 
 ## 확인 명령
 

@@ -1,3 +1,14 @@
 runConfig:
   minInstances: 0
   maxInstances: 3
+env:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyCcxiO1zUkUtwiL-2XusWWjvOgwXos3LJ4
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: jsproject-16910.firebaseapp.com
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: jsproject-16910
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: jsproject-16910.firebasestorage.app
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:1011679973527:web:cb4ed7c1c183c13c4359d2

@@ -18,7 +18,7 @@ export default function AdminLogin() {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       const admin = await getDoc(doc(db, "admins", result.user.uid));
-      if (!admin.exists()) { await signOut(auth); setError("관리자 권한이 등록되지 않은 계정입니다."); return; }
+      if (!admin.exists() || admin.data().enabled !== true) { await signOut(auth); setError("관리자 권한이 등록되지 않은 계정입니다."); return; }
       router.push("/admin");
     } catch { setError("로그인에 실패했습니다. 계정 정보와 관리자 권한을 확인해 주세요."); }
     finally { setBusy(false); }

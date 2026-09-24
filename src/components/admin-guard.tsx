@@ -18,7 +18,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
       if (!user) { router.replace("/admin/login"); return; }
       try {
         const admin = await getDoc(doc(database, "admins", user.uid));
-        if (admin.exists()) setState("allowed");
+        if (admin.exists() && admin.data().enabled === true) setState("allowed");
         else { await signOut(firebaseAuth); setState("denied"); }
       } catch { setState("denied"); }
     });
