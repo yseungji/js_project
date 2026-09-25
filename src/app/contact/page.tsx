@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { contact } from "@/lib/products";
 
-export const metadata: Metadata = { title: "구매 문의", description: "JS건설 지주·표지판 구매 및 맞춤 주문 제작 문의: 전화와 이메일로 상담하세요." };
+export const metadata: Metadata = {
+  title: "구매 문의",
+  description: "JS건설 지주·표지판 구매 및 맞춤 주문 제작 문의: 전화와 이메일로 상담하세요.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return <main><section className="page-hero"><div className="container"><h1>편한 방법으로 문의하세요</h1><p>지주·표지판 맞춤 제작을 원하시면 필요한 규격과 문구, 수량을 알려주세요.</p></div></section>

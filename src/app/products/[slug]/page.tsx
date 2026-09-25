@@ -9,7 +9,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const product = await getProduct((await params).slug);
-  return product ? { title: product.name, description: product.summary } : { title: "제품을 찾을 수 없습니다" };
+  return product
+    ? { title: product.name, description: product.summary, alternates: { canonical: `/products/${encodeURIComponent(product.slug)}` } }
+    : { title: "제품을 찾을 수 없습니다", robots: { index: false, follow: false } };
 }
 
 export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {

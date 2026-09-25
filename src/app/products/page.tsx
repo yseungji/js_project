@@ -4,7 +4,11 @@ import { ProductCard } from "@/components/product-card";
 import { getProducts } from "@/lib/firebase-server";
 import { Category } from "@/lib/products";
 
-export const metadata: Metadata = { title: "지주·표지판 제품 소개", description: "JS건설의 지주·표지판 제품을 확인하고 현장에 맞는 규격과 문구의 주문 제작을 문의하세요. 시공은 제공하지 않습니다." };
+export const metadata: Metadata = {
+  title: "지주·표지판 제품 소개",
+  description: "JS건설의 지주·표지판 제품을 확인하고 현장에 맞는 규격과 문구의 주문 제작을 문의하세요. 시공은 제공하지 않습니다.",
+  alternates: { canonical: "/products" },
+};
 export const dynamic = "force-dynamic";
 
 export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {

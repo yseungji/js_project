@@ -3,7 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { contact } from "@/lib/products";
 
-export const metadata: Metadata = { title: "회사 소개", description: "도로 공사 분야의 법인 회사 JS건설을 소개합니다." };
+export const metadata: Metadata = {
+  title: "회사 소개",
+  description: "도로 공사 분야의 법인 회사 JS건설을 소개합니다.",
+  alternates: { canonical: "/company" },
+};
 
 export default function CompanyPage() {
   return <main><section className="page-hero"><div className="container company-intro"><h1>현장에서 쌓은 경험으로<br />제품을 소개합니다.</h1><p>JS건설은 도로 공사 분야의 법인 회사입니다.</p></div></section>
