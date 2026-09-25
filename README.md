@@ -33,7 +33,9 @@ Firebase 설정값이 없는 로컬 환경에서는 공개 페이지에 예시 �
 
 ## 배포
 
-GitHub 저장소 `yseungji/js_project`의 브랜치를 Firebase 콘솔 → App Hosting 백엔드에 연결합니다. 공개 Firebase 웹 앱 설정값은 `apphosting.yaml`에 저장되어 있습니다. `main`에 병합하거나 백엔드에서 지정한 브랜치에 푸시하면 자동 배포됩니다. 도메인을 연결한 후 검색 엔진 등록, 실제 상품 정보·사진 검수, 문의 연락처 테스트를 마쳐야 운영할 수 있습니다.
+Firebase App Hosting의 `js-construction` 백엔드를 GitHub 저장소 `yseungji/js_project`에 연결하고, 라이브 브랜치를 `codex/firebase-site`로 지정합니다. 이 브랜치에 푸시하면 자동 배포되도록 Git 설정에서 자동 출시를 켭니다. 공개 Firebase 웹 앱 설정값은 `apphosting.yaml`에 저장되어 있습니다.
+
+UI 수정 후 배포 흐름은 `npm run typecheck`와 `npm run build`로 확인한 다음, 변경 사항을 커밋하고 `git push origin codex/firebase-site`를 실행하는 것입니다. 배포 상태는 [Firebase App Hosting 출시 화면](https://console.firebase.google.com/project/jsproject-16910/apphosting/backends/js-construction/locations/asia-east1/rollouts)에서 확인합니다. 도메인을 연결한 후 검색 엔진 등록, 실제 상품 정보·사진 검수, 문의 연락처 테스트를 마쳐야 운영할 수 있습니다.
 
 ## 확인 명령
 

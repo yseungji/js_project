@@ -1,4 +1,18 @@
 {
   "firestore": { "rules": "firestore.rules" },
-  "storage": { "rules": "storage.rules" }
+  "storage": { "rules": "storage.rules" },
+  "apphosting": [
+    {
+      "backendId": "js-construction",
+      "rootDir": ".",
+      "ignore": [
+        "node_modules",
+        ".git",
+        ".next",
+        ".env.local",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
 }
