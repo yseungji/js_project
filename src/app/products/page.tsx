@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/product-card";
 import { getProducts } from "@/lib/firebase-server";
 import { Category } from "@/lib/products";
 
-export const metadata: Metadata = { title: "지주·표지판 제품 소개", description: "JS건설의 도로 표지판과 지주 제품을 확인하고 구매 문의하세요." };
+export const metadata: Metadata = { title: "지주·표지판 제품 소개", description: "JS건설의 지주·표지판 제품을 확인하고 현장에 맞는 규격과 문구의 주문 제작을 문의하세요. 시공은 제공하지 않습니다." };
 export const dynamic = "force-dynamic";
 
 export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
@@ -19,6 +19,6 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     </div><div className="product-grid">{products.map(product => <ProductCard key={product.id} product={product} />)}</div>
     {products.length === 0 && <p>아직 등록된 제품이 없습니다.</p>}
     <p className="note">사진은 제품 구성 참고용입니다. 규격·재질·판매 단위는 확인 후 기재합니다.</p></div></section>
-    <section className="cta-band"><div className="container"><h2>찾는 제품이 있으신가요?</h2><p>필요한 규격과 수량을 알려주시면 상담해 드립니다.</p><Link className="button button-dark" href="/contact">구매 문의</Link></div></section>
+    <section className="cta-band"><div className="container"><h2>원하는 규격의 제품이 있으신가요?</h2><p>지주·표지판의 규격, 문구, 수량을 알려주시면 맞춤 제작 가능 여부를 상담해 드립니다.</p><Link className="button button-dark" href="/contact">맞춤 제작 문의</Link></div></section>
   </main>;
 }

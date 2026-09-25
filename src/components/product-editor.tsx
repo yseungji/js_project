@@ -21,6 +21,8 @@ function Editor({ id }: { id?: string }) {
   const [product, setProduct] = useState<Product>({ ...emptyProduct });
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
+  const [additionalFile, setAdditionalFile] = useState<File | null>(null);
+  const [additionalPreview, setAdditionalPreview] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(Boolean(id));
@@ -36,6 +38,11 @@ function Editor({ id }: { id?: string }) {
     const url = URL.createObjectURL(file); setPreview(url);
     return () => URL.revokeObjectURL(url);
   }, [file]);
+  useEffect(() => {
+    if (!additionalFile) { setAdditionalPreview(""); return; }
+    const url = URL.createObjectURL(additionalFile); setAdditionalPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [additionalFile]);
   function update<K extends keyof Product>(key: K, value: Product[K]) { setProduct(current => ({ ...current, [key]: value })); }
   async function save(status?: "draft" | "published") {
     setError("");
@@ -43,11 +50,13 @@ function Editor({ id }: { id?: string }) {
     const slug = id || product.slug.trim().toLowerCase();
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) { setError("URL 주소는 영문 소문자, 숫자, 하이픈으로 입력해 주세요."); return; }
     if (!product.name.trim()) { setError("상품명을 입력해 주세요."); return; }
-    if (file && (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size >= 10 * 1024 * 1024)) { setError("10MB 미만의 JPG, PNG, WebP 파일만 업로드할 수 있습니다."); return; }
+    if ([file, additionalFile].some(selected => selected && (!["image/jpeg", "image/png", "image/webp"].includes(selected.type) || selected.size >= 10 * 1024 * 1024))) { setError("사진은 각각 10MB 미만의 JPG, PNG, WebP 파일이어야 합니다."); return; }
     setBusy(true);
     try {
       let imageUrl = product.imageUrl;
       let imagePath = product.imagePath || "";
+      let additionalImageUrl = product.additionalImageUrl || "";
+      let additionalImagePath = product.additionalImagePath || "";
       if (file) {
         if (!storage) throw new Error("저장소 설정이 필요합니다.");
         const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
@@ -56,7 +65,16 @@ function Editor({ id }: { id?: string }) {
         await uploadBytes(fileRef, file, { contentType: file.type });
         imageUrl = await getDownloadURL(fileRef);
       }
-      const next = { ...product, slug, name: product.name.trim(), imageUrl, imagePath, status: status || product.status };
+      if (additionalFile) {
+        if (!storage) throw new Error("저장소 설정이 필요합니다.");
+        const safeName = additionalFile.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+        additionalImagePath = `products/${slug}/${Date.now()}-additional-${safeName}`;
+        const fileRef = ref(storage, additionalImagePath);
+        await uploadBytes(fileRef, additionalFile, { contentType: additionalFile.type });
+        additionalImageUrl = await getDownloadURL(fileRef);
+      }
+      const next = { ...product, slug, name: product.name.trim(), imageUrl, imagePath, additionalImageUrl,
+        additionalImagePath, additionalImageCaption: product.additionalImageCaption?.trim() || "", status: status || product.status };
       if (!next.imageUrl) { setError("상품 사진을 추가해 주세요."); return; }
       const { id: ignored, ...data } = next;
       await setDoc(doc(db, "products", slug), { ...data, updatedAt: serverTimestamp() }, { merge: true });
@@ -70,7 +88,12 @@ function Editor({ id }: { id?: string }) {
     <form onSubmit={event => { event.preventDefault(); void save(); }}>
       <section className="admin-card form-section"><h2>상품 사진</h2><div className="info-grid">
         <div>{(preview || product.imageUrl) ? <Image className="preview-img" src={preview || product.imageUrl} alt="상품 사진 미리보기" width={350} height={250} unoptimized={Boolean(preview)} /> : <p className="muted">아직 사진이 없습니다.</p>}</div>
-        <div><h3>사진 추가</h3><p className="muted">새 제품 사진을 업로드하고 대표 사진으로 사용합니다.</p><input aria-label="사진 선택" type="file" accept="image/*" onChange={e => setFile(e.target.files?.[0] || null)} /><p className="note">현재 사진에는 표지판과 지주가 함께 보입니다. 제품별 사진은 추후 추가할 수 있습니다.</p></div>
+        <div><h3>대표 사진</h3><p className="muted">상품 목록과 상세 페이지의 첫 사진으로 사용합니다.</p><input aria-label="대표 사진 선택" type="file" accept="image/jpeg,image/png,image/webp" onChange={e => setFile(e.target.files?.[0] || null)} /></div>
+      </div></section>
+      <section className="admin-card form-section"><h2>추가 사진</h2><div className="info-grid">
+        <div>{(additionalPreview || product.additionalImageUrl) ? <Image className="preview-img" src={additionalPreview || product.additionalImageUrl || ""} alt="추가 사진 미리보기" width={350} height={250} unoptimized={Boolean(additionalPreview)} /> : <p className="muted">아직 추가 사진이 없습니다.</p>}</div>
+        <div><h3>규격·상세 참고 사진</h3><p className="muted">고객용 상세 페이지에서 대표 사진 아래에 표시합니다.</p><input aria-label="추가 사진 선택" type="file" accept="image/jpeg,image/png,image/webp" onChange={e => setAdditionalFile(e.target.files?.[0] || null)} />
+          <div className="field"><label htmlFor="additionalImageCaption">사진 설명</label><input id="additionalImageCaption" value={product.additionalImageCaption || ""} onChange={e => update("additionalImageCaption", e.target.value)} placeholder="예: 규격 실측 참고 사진" /></div></div>
       </div></section>
       <section className="admin-card form-section"><h2>기본 정보</h2><div className="form-grid">
         <div className="field"><label htmlFor="name">상품명</label><input id="name" required value={product.name} onChange={e => update("name", e.target.value)} /></div>

@@ -28,7 +28,7 @@ function ProductList() {
   const filtered = products.filter(p => p.name.includes(query));
   return <><p className="admin-eyebrow">관리자 / 상품 관리</p><h1 className="admin-title">상품 목록</h1><p className="muted">상품을 추가하거나 내용을 수정할 수 있습니다.</p>
     <div className="admin-toolbar"><input className="search-input" aria-label="상품 검색" placeholder="상품명을 입력하세요" value={query} onChange={e => setQuery(e.target.value)} /><Link className="button button-dark" href="/admin/products/new">새 상품 등록</Link></div>
-    {products.length === 0 && <div className="admin-card"><h2>기본 상품 등록</h2><p>현재 받은 사진의 표지판과 지주를 상품 데이터베이스에 등록합니다.</p><button className="button button-dark" onClick={seed}>기본 상품 2개 등록</button></div>}
+    {products.length === 0 && <div className="admin-card"><h2>기본 상품 등록</h2><p>현재 받은 사진의 표지판과 지주를 상품 데이터베이스에 등록합니다.</p><button className="button button-dark" onClick={seed}>기본 상품 {sampleProducts.length}개 등록</button></div>}
     {error && <p className="error" role="alert">{error}</p>}
     <div className="admin-list">{filtered.map(p => <div className="admin-card admin-list-item" key={p.id}>
       <Image className="admin-thumb" src={p.imageUrl || sampleProducts[0].imageUrl} alt="" width={96} height={72} />
