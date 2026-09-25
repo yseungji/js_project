@@ -11,6 +11,12 @@ Figma 시안을 바탕으로 만든 Next.js 제품 소개 사이트입니다. �
 - Cloud Storage: 상품 사진
 - Firebase App Hosting: Next.js 서버 렌더링 및 배포
 
+## 관리자 로그인 주소
+
+[관리자 로그인 페이지](https://js-construction--jsproject-16910.asia-east1.hosted.app/admin/login)
+
+주소를 외울 필요는 없습니다. 이 README를 열거나 브라우저 즐겨찾기에 저장해 두세요. 관리자 화면은 로그인과 Firebase 관리자 권한 확인으로 보호되므로, 주소 자체를 비밀번호처럼 숨길 필요는 없습니다. 추후 별도 도메인을 연결하면 새 도메인 뒤에 `/admin/login`을 붙여 접속할 수 있습니다.
+
 ## 로컬 실행
 
 1. `npm install`
