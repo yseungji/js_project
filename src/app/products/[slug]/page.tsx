@@ -10,7 +10,20 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const product = await getProduct((await params).slug);
   return product
-    ? { title: product.name, description: product.summary, alternates: { canonical: `/products/${encodeURIComponent(product.slug)}` } }
+    ? {
+        title: product.name,
+        description: product.summary,
+        alternates: { canonical: `/products/${encodeURIComponent(product.slug)}` },
+        openGraph: {
+          title: `${product.name} 판매·맞춤 제작 문의 | JS건설`,
+          description: `JS건설의 ${product.name} 제품을 사진과 함께 확인하세요. 필요한 규격과 수량, 납품 지역을 알려주시면 맞춤 주문 제작 가능 여부와 구매 방법을 상담해 드립니다. 제품만 판매하며 시공 서비스는 제공하지 않습니다.`,
+          url: `/products/${encodeURIComponent(product.slug)}`,
+          siteName: "JS건설",
+          locale: "ko_KR",
+          type: "website",
+          images: [{ url: product.imageUrl, alt: `${product.name} 상품 사진` }],
+        },
+      }
     : { title: "제품을 찾을 수 없습니다", robots: { index: false, follow: false } };
 }
 

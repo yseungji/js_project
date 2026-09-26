@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: "지주·표지판 제품 소개",
   description: "JS건설의 지주·표지판 제품을 확인하고 현장에 맞는 규격과 문구의 주문 제작을 문의하세요. 시공은 제공하지 않습니다.",
   alternates: { canonical: "/products" },
+  openGraph: {
+    title: "도로 표지판·금속 지주 제품 소개 | JS건설",
+    description: "JS건설이 판매하는 도로 표지판과 금속 지주 제품을 사진으로 살펴보세요. 필요한 규격과 문구, 수량, 납품 지역을 알려주시면 맞춤 주문 제작 가능 여부와 구매 방법을 안내합니다. 시공 서비스는 제공하지 않습니다.",
+    url: "/products",
+    siteName: "JS건설",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 export const dynamic = "force-dynamic";
 

@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/product-card";
 import { getProducts } from "@/lib/firebase-server";
 
 export const metadata: Metadata = {
+  description: "도로 표지판·금속 지주 판매와 맞춤 제작 상담. JS건설은 제품만 판매하며 시공은 제공하지 않습니다.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "JS건설 | 지주·표지판 제품 판매",

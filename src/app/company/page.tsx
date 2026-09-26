@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   title: "회사 소개",
   description: "도로 공사 분야의 법인 회사 JS건설을 소개합니다.",
   alternates: { canonical: "/company" },
+  openGraph: {
+    title: "회사 소개 | JS건설",
+    description: "JS건설은 도로 공사 분야의 법인 회사입니다. 이 사이트에서 도로 표지판과 금속 지주 제품을 소개하고 구매 및 맞춤 주문 제작 문의를 받습니다. 제품만 판매하며 현장 시공 서비스는 제공하지 않습니다.",
+    url: "/company",
+    siteName: "JS건설",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function CompanyPage() {

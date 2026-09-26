@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: "구매 문의",
   description: "JS건설 지주·표지판 구매 및 맞춤 주문 제작 문의: 전화와 이메일로 상담하세요.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "지주·표지판 구매 문의 | JS건설",
+    description: "JS건설의 도로 표지판·금속 지주 구매와 맞춤 주문 제작을 문의하세요. 필요한 제품 종류, 규격, 문구, 수량과 납품 지역을 정리해 전화 또는 이메일로 연락해 주시면 상담해 드립니다. 시공 서비스는 제공하지 않습니다.",
+    url: "/contact",
+    siteName: "JS건설",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
