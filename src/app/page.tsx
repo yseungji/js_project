@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     title: "JS건설 | 지주·표지판 제품 판매",
-    description: "JS건설의 도로 표지판과 금속 지주를 살펴보세요. 현장에 맞는 지주·표지판의 맞춤 제작과 구매를 문의할 수 있습니다. 제품만 판매하며 시공은 제공하지 않습니다.",
+    description: "JS건설은 도로 표지판과 금속 지주를 판매합니다. 현장에 맞는 맞춤 제작을 상담하며 시공은 제공하지 않습니다.",
     url: "/",
     siteName: "JS건설",
     locale: "ko_KR",
