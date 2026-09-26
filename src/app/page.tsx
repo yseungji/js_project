@@ -33,12 +33,13 @@ export default async function Home() {
     </div></section>
     <section className="section"><div className="container"><span className="eyebrow">PRODUCTS</span><h2>찾고 계신 제품을 선택하세요</h2>
       <p className="section-lead">현재 사진 자료가 있는 상품으로 제품을 안내합니다. 추가 상품은 준비되는 대로 등록합니다.</p>
+      <div className="button-row category-actions"><Link className="button button-outline" href="/products/signs">도로 표지판 보기</Link><Link className="button button-outline" href="/products/posts">금속 지주 보기</Link></div>
       <div className="product-grid">{products.map(product => <ProductCard key={product.id} product={product} />)}</div>
     </div></section>
     <section className="section section-tint"><div className="container"><span className="eyebrow">HOW TO ORDER</span><h2>제품을 확인하고 편하게 문의하세요</h2>
-      <div className="steps"><div><b>01</b><h3>제품 선택</h3><p>표지판 또는 지주를 확인</p></div><div><b>02</b><h3>필요 조건 정리</h3><p>규격·수량·납품 지역 정리</p></div><div><b>03</b><h3>상담 연결</h3><p>전화·이메일 문의</p></div></div>
+      <div className="steps"><div><b>01</b><h3>제품 선택</h3><p>표지판 또는 지주를 확인</p></div><div><b>02</b><h3>필요 조건 정리</h3><p>규격·수량·납품 지역 정리</p></div><div><b>03</b><h3>상담 연결</h3><p>이메일 문의</p></div></div>
     </div></section>
     <section className="section"><div className="container"><h2>JS건설이 판매합니다</h2><p className="section-lead">JS건설은 도로 공사 분야의 법인 회사입니다. 지주와 표지판은 현장에 필요한 조건에 맞춰 주문 제작을 상담합니다. 제품 판매만 진행하며 시공은 제공하지 않습니다.</p></div></section>
-    <section className="cta-band"><div className="container"><h2>필요한 규격이 따로 있으신가요?</h2><p>지주·표지판의 규격, 문구, 수량을 알려주시면 맞춤 제작 가능 여부를 상담해 드립니다.</p><div className="button-row"><Link className="button button-dark" href="/contact">전화 문의</Link><Link className="button button-white" href="/contact">이메일 문의</Link></div></div></section>
+    <section className="cta-band"><div className="container"><h2>필요한 규격이 따로 있으신가요?</h2><p>지주·표지판의 규격, 문구, 수량을 알려주시면 맞춤 제작 가능 여부를 상담해 드립니다.</p><Link className="button button-dark" href="/contact">이메일 문의</Link></div></section>
   </main>;
 }

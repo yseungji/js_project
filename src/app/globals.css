@@ -9,6 +9,8 @@ h1,h2,h3,p{margin-top:0}h1{font-size:42px;line-height:1.45;letter-spacing:-.05em
 @media(max-width:680px){.container,.admin-container{width:min(100% - 36px,1240px)}.hero,.section,.page-hero{padding:48px 0}h1{font-size:31px}h2{font-size:25px}.hero p,.page-hero p{font-size:16px}.product-grid,.info-grid,.contact-grid,.form-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.steps>div{border-bottom:1px solid var(--line)}.help-list{grid-template-columns:1fr}.button{min-height:48px}.admin-list-item{flex-wrap:wrap}.admin-bar,.admin-toolbar{align-items:flex-start;flex-direction:column}.login-brand{padding:48px 28px}.login-form-wrap{padding:48px 28px}.site-footer small{line-height:1.7;display:block}}
 body:has(.admin-shell)>.site-header,body:has(.admin-shell)>.site-footer{display:none}
 .detail-additional{margin:24px 0 0}.detail-additional a{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f5f7fa}.detail-additional img{display:block;width:100%;height:auto}.detail-additional figcaption{margin-top:10px;color:var(--muted);font-size:14px}
+.landing-actions{margin-top:26px}.category-actions{margin:0 0 30px}
+.contact-grid-single{grid-template-columns:minmax(0,1fr);max-width:680px}.contact-card strong{overflow-wrap:anywhere}
 .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:900px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.product-grid{grid-template-columns:1fr}}

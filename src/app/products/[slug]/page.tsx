@@ -75,7 +75,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
       <p className="note">{guide?.imageNotice || "사진은 제품 구성 참고용입니다. 정확한 규격과 판매 단위는 문의 시 확인해 주세요."}</p></div>
     <div className="detail-copy"><span className="eyebrow">제품 판매 · 시공 미제공</span><h1>{product.name}</h1><p>{product.summary}</p>
       <div className="detail-meta"><strong>가격&nbsp; {product.priceLabel || "견적 문의"}</strong><p>{product.detailScope?.trim() || guide?.scope || "필요한 제품 규격과 판매 구성을 문의해 주세요."}</p></div>
-      <div className="button-row"><a className="button button-dark" href={`tel:${contact.phone.replaceAll("-", "")}`}>전화 문의</a><a className="button button-white" href={`mailto:${contact.email}?subject=${encodeURIComponent(product.name + " 구매 문의")}`}>이메일 문의</a></div>
+      <a className="button button-dark" href={`mailto:${contact.email}?subject=${encodeURIComponent(product.name + " 구매 문의")}`}>이메일 문의</a>
     </div>
   </div></section>
   <section className="section section-tint"><div className="container info-grid"><div className="info-card"><h2>사진과 판매 범위 안내</h2>{(product.photoDescription?.trim() || guide?.photo) && <p>{product.photoDescription?.trim() || guide?.photo}</p>}<p>{product.description}</p>
@@ -83,5 +83,5 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
       {confirmedDetails.length < 3 && <p>표기되지 않은 상세 규격·재질·판매 단위는 견적 문의 시 확인해 주세요.</p>}
       <p>시공 서비스는 제공하지 않습니다.</p></div>
     <div className="info-card"><h2>맞춤 제작·견적 문의</h2><p>{product.inquiryGuide?.trim() || guide?.inquiry || "제품의 용도, 희망 규격과 수량, 납품 지역을 알려주시면 제작 가능 여부와 견적을 상담합니다."}</p><div className="help-list"><div>제품 종류</div><div>희망 규격·수량</div><div>납품 지역·일정</div></div></div></div></section>
-  <section className="cta-band"><div className="container"><h2>제품이 필요하신가요?</h2><div className="button-row"><a className="button button-dark" href={`tel:${contact.phone.replaceAll("-", "")}`}>전화 문의</a><Link className="button button-white" href="/contact">문의 방법 보기</Link></div></div></section></main>;
+  <section className="cta-band"><div className="container"><h2>제품이 필요하신가요?</h2><div className="button-row"><a className="button button-dark" href={`mailto:${contact.email}?subject=${encodeURIComponent(product.name + " 구매 문의")}`}>이메일 문의</a><Link className="button button-white" href="/contact">문의 방법 보기</Link></div></div></section></main>;
 }

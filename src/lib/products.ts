@@ -23,8 +23,7 @@ export type Product = {
 };
 
 export const contact = {
-  phone: "010-3671-9640",
-  email: "0116719640@hanmail.net",
+  email: "semin9640@hanmail.net",
   businessNumber: "203-16-63696",
 } as const;
 
