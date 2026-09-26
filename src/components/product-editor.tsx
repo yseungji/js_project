@@ -102,6 +102,11 @@ function Editor({ id }: { id?: string }) {
       <div className="field"><label htmlFor="slug">URL 주소 (영문 소문자)</label><input id="slug" value={id || product.slug} disabled={Boolean(id)} onChange={e => update("slug", e.target.value)} placeholder="예: road-sign" required /></div>
       <div className="field"><label htmlFor="summary">한 줄 소개</label><input id="summary" value={product.summary} onChange={e => update("summary", e.target.value)} /></div>
       <div className="field"><label htmlFor="description">상세 설명</label><textarea id="description" value={product.description} onChange={e => update("description", e.target.value)} placeholder="제품 특징과 구매 안내를 입력하세요" /></div></section>
+      <section className="admin-card form-section"><h2>고객용 상세 안내</h2><p className="muted">사진에서 확인되는 내용과 판매 범위만 적어 주세요. 확인되지 않은 치수·재질은 기입하지 않아도 됩니다. 비워두면 기존 제품 안내 문구가 사용됩니다.</p>
+        <div className="field"><label htmlFor="detailScope">판매 대상·구성</label><textarea id="detailScope" value={product.detailScope || ""} onChange={e => update("detailScope", e.target.value)} placeholder="예: 판매 대상은 금속 지주이며 콘크리트 기초는 포함되지 않습니다." /></div>
+        <div className="field"><label htmlFor="photoDescription">사진에서 확인되는 점</label><textarea id="photoDescription" value={product.photoDescription || ""} onChange={e => update("photoDescription", e.target.value)} placeholder="사진에 실제로 보이는 제품 특징을 설명해 주세요." /></div>
+        <div className="field"><label htmlFor="inquiryGuide">견적 문의 안내</label><textarea id="inquiryGuide" value={product.inquiryGuide || ""} onChange={e => update("inquiryGuide", e.target.value)} placeholder="고객이 알려주면 좋은 규격·수량·납품 지역 등을 적어 주세요." /></div>
+      </section>
       <section className="admin-card form-section"><h2>판매 정보</h2><div className="form-grid">
         <div className="field"><label htmlFor="specification">규격</label><input id="specification" value={product.specification} onChange={e => update("specification", e.target.value)} placeholder="확인 후 입력" /></div>
         <div className="field"><label htmlFor="material">재질</label><input id="material" value={product.material} onChange={e => update("material", e.target.value)} placeholder="확인 후 입력" /></div>

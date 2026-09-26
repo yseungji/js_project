@@ -7,6 +7,9 @@ export type Product = {
   category: Category;
   summary: string;
   description: string;
+  detailScope?: string;
+  photoDescription?: string;
+  inquiryGuide?: string;
   specification: string;
   material: string;
   saleUnit: string;
